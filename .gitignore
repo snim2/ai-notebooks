@@ -1,3 +1,9 @@
+# Jupyter notebooks created in the Docker containers.
+notebooks
+
+# Workspaces and other temporary files saved by the notebooks.
+jupyter_ai_config/lab/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

@@ -1,0 +1,14 @@
+{
+    "model_provider_id": "ollama:qwen2.5-coder:7b",
+    "embeddings_provider_id": null,
+    "send_with_shift_enter": false,
+    "fields": {
+        "ollama:qwen2.5-coder:7b": {
+            "base_url": "http://host.docker.internal:11434"
+        }
+    },
+    "api_keys": {},
+    "completions_model_provider_id": null,
+    "completions_fields": {},
+    "embeddings_fields": {}
+}

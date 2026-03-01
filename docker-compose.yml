@@ -1,0 +1,39 @@
+services:
+  jupyter:
+    build: .
+    container_name: ai-jupyter
+    working_dir: /app/notebooks
+    environment:
+      OLLAMA_HOST: "http://host.docker.internal:11434"
+      JUPYTER_AI_DEFAULT_MODEL: openai:qwen2.5-coder:7b
+      JUPYTER_TOKEN: "${JUPYTER_TOKEN}"
+    stdin_open: true
+    tty: true
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETUID
+      - SETGID
+      - DAC_OVERRIDE
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=512m,noexec
+    volumes:
+      - ./notebooks:/app/notebooks
+      - ./jupyter_ai_config:/home/jupyter/.jupyter
+    ports:
+      - 8888:8888
+    networks:
+      - jupyter_net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 4G
+
+networks:
+  jupyter_net:
+    driver: bridge
